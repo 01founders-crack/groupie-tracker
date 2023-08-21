@@ -2,7 +2,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"groupie-tracker/backend/handlers"
 	"html/template"
@@ -20,24 +19,39 @@ func main() {
 	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("./frontend/images"))))
 
 
-	artists, err := handlers.GetArtists()
+	_, err := handlers.GetArtists()
 	
     if err != nil {
         fmt.Println("Error:", err)
         return
     }
-
-    for _, artist := range artists {
-        fmt.Printf("Artist ID: %d, Name: %s\n", artist.ID, artist.Name)
-    }
-
-	// for i, p := range response.Persons {
-	// 		fmt.Println("")
+    // for _, artist := range artists {
+    //     fmt.Printf("Artist ID: %d, Name: %s\n", artist.ID, artist.Members)
+    // }
+	// for _, artist := range artists {	
+	// 	printRelatedDatesLocations(artist.Relations)
+	// 	fmt.Println("")
 	// }
+	
 
 	port := "3000"
 	println("Server listening on port http://localhost:" + port)
 	http.ListenAndServe(":"+port, nil)
+}
+
+func printRelatedDatesLocations(url string){
+	relations, err := handlers.GetRelations(url)
+		if err != nil {
+			fmt.Println("Error:", err)
+			return
+		}
+	for location, relatedDatesLocations := range relations.DatesLocations {
+        fmt.Printf("location: %s\n", location)
+        fmt.Println("Related DatesLocations:")
+        for _, relatedDateL := range relatedDatesLocations {
+            fmt.Println(relatedDateL)
+        }
+    }
 }
 
 func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
@@ -55,8 +69,10 @@ func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
 }
 
 func handleIndex(w http.ResponseWriter, r *http.Request) {
-	data := struct{}{} // Data for rendering, if needed
-	renderTemplate(w, "index", data)
+	// data := struct{}{} // Data for rendering, if needed
+	artists, _ := handlers.GetArtists()
+	// fmt.Println(artists)
+	renderTemplate(w, "index", artists)
 }
 
 func handle404(w http.ResponseWriter, r *http.Request) {
@@ -68,28 +84,3 @@ func handle500(w http.ResponseWriter, r *http.Request) {
 	data := struct{}{} // Data for rendering, if needed
 	renderTemplate(w, "500", data)
 }
-
-type Response struct {
-    Page       int `json:"page"`
-    PerPage    int `json:"per_page"`
-    Total      int `json:"total"`
-    TotalPages int `json:"total_pages"`
-    Data       []struct {
-        ID        int    	`json:"id"`
-        Name     string 	`json:"name"`
-        Members string 		`json:"members"`
-        CreationDate  string `json:"creationDate"`
-        Avatar    string `json:"avatar"`
-    } `json:"data"`
-    Support struct {
-        URL  string `json:"url"`
-        Text string `json:"text"`
-    } `json:"support"`
-}
-
-// PrettyPrint to print struct in a readable way
-func PrettyPrint(i interface{}) string {
-    s, _ := json.MarshalIndent(i, "", "\t")
-    return string(s)
-}
-

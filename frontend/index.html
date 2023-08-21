@@ -3,32 +3,35 @@
 
 <section class="s2">
   <div class="s2Showcase">
+    <!--
+      TEST article
+    -->
+    {{range .}}
     <article class="musicShowcase">
       <div class="musicImg">
-        <img src="https://groupietrackers.herokuapp.com/api/images/queen.jpeg" alt="Queen">
+        <img src="{{.Image}}" alt="{{.Name}}" />
       </div>
       <div class="musicContent">
         <div class="section">
-          <h2>Queen</h2>
-          <span>Founded: 1970</span>
-          <br>
-          <span>Debut Album: 05-06-2002</span>
+          <h2>{{.Name}}</h2>
+          <span>Founded: {{.CreationDate}}</span>
+          <br />
+          <span>Debut Album: {{.FirstAlbum}}</span>
         </div>
         <div class="section">
           <span>Members:</span>
           <ol>
-            <li>Jacob Hemphill</li>
-            <li>Bob Jefferson</li>
-            <li>Ryan \"Byrd\" Berty</li>
+            {{range .Members}}
+            <li>{{.}}</li>
+            {{end}}
           </ol>
         </div>
       </div>
     </article>
-    <article class="musicShowcase">2</article>
-    <article class="musicShowcase">3</article>
-    <article class="musicShowcase">4</article>
-    <article class="musicShowcase">5</article>
-    <article class="musicShowcase">6</article>
+    {{end}}
+    <!--
+      TEST END article
+    -->
   </div>
 </section>
 {{end}}

@@ -218,6 +218,11 @@ h2 {
   
   .back {
     transform: rotateY(180deg);
+    background-color:ivory;
+  }
+
+  .backText {
+      color:rgb(60, 62, 68) 
   }
   
   /* Show back on hover */

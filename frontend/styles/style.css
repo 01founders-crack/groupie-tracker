@@ -1,3 +1,27 @@
+html {
+    font-family:sans-serif;
+    -ms-text-size-adjust:100%;
+    -webkit-text-size-adjust:100%
+   }
+body {
+    margin:0
+   }
+   
+   article,
+   aside,
+   details,
+   figcaption,
+   figure,
+   footer,
+   header,
+   main,
+   menu,
+   nav,
+   section,
+   summary {
+    display:block
+   }
+
 ul {
     list-style: none;
 }
@@ -34,6 +58,31 @@ ul {
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
+}
+
+.headerList {
+    display: flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+.aboutElement {
+    padding-right: 40px;
+}
+
+.donateElement {
+    margin: 0px;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    border: 1px solid rgb(255, 152, 0);
+    background: transparent none repeat scroll 0% 0%;
+    color: rgb(51, 51, 51);
+    transition: all 0.1s ease 0s;
 }
 
 .mainMain {
@@ -113,4 +162,25 @@ ul {
 .footerFooter a:hover {
     color: yellow;
     text-decoration: none;
+}
+
+.footerFooter ul {
+    display: flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0px;
+    margin-top: 0px;
+    padding: 20px;
+    width: 100%;
+}
+
+.githubImg {
+    padding-right: 50px;
+}
+
+.twitterImg {
+    padding-right: 35px;
 }

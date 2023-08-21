@@ -7,7 +7,8 @@
       TEST article
     -->
     {{range .}}
-    <article class="musicShowcase">
+    <article class="musicShowcase flashcard">
+      <div class="front">
       <div class="musicImg">
         <img src="{{.Image}}" alt="{{.Name}}" />
       </div>
@@ -26,6 +27,11 @@
             {{end}}
           </ol>
         </div>
+      </div>
+      </div>
+
+      <div class="back">
+        <p>TEST</p>
       </div>
     </article>
     {{end}}

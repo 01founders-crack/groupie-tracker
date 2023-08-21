@@ -175,7 +175,7 @@ h2 {
 
 .musicShowcase {
     width: 600px;
-    height: 440px;
+    height: 220px;
     display: flex;
     overflow: hidden;
     background: rgb(60, 62, 68) none repeat scroll 0% 0%;
@@ -198,22 +198,36 @@ h2 {
     flex-direction: column;
 }
 
-.section {
-
-}
-
-.section ol {
-    display: flex;
-    -moz-box-pack: center;
-    justify-content: center;
-    -moz-box-align: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 0px;
-    margin-top: 0px;
-    padding: 20px;
+.flashcard {
+    width: 240px;
+    height: 600px;
+    perspective: 1000px;
+  }
+  
+  .front, .back {
+    position: absolute;
     width: 100%;
-}
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.5s ease;
+  }
+  
+  .front {
+    transform: rotateY(0deg);
+  }
+  
+  .back {
+    transform: rotateY(180deg);
+  }
+  
+  /* Show back on hover */
+  .flashcard:hover .front {
+    transform: rotateY(180deg);
+  }
+  
+  .flashcard:hover .back {
+    transform: rotateY(0deg);
+  }
 
 .footerFooter {
     display: flex;

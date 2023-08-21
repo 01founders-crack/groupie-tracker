@@ -200,7 +200,7 @@ h2 {
 
 .flashcard {
     width: 240px;
-    height: 650px;
+    height: 600px;
     text-size-adjust: small;
     perspective: 1000px;
   }
@@ -227,8 +227,10 @@ h2 {
   }
 
   .backText ul {
-    list-style-type: circle;
+    list-style-type: none;
     font-size: small;
+    text-align: left;
+    padding: 0;
   }
   
   /* Show back on hover */

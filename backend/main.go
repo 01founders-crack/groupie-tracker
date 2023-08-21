@@ -16,8 +16,8 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./frontend/styles"))))
 	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("./frontend/images"))))
 
-	port := "8080"
-	println("Server listening on port " + port)
+	port := "3000"
+	println("Server listening on port http://localhost:" + port)
 	http.ListenAndServe(":"+port, nil)
 }
 

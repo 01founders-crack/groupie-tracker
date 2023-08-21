@@ -70,9 +70,17 @@ func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
 
 func handleIndex(w http.ResponseWriter, r *http.Request) {
 	// data := struct{}{} // Data for rendering, if needed
-	artists, _ := handlers.GetArtists()
-	// fmt.Println(artists)
-	renderTemplate(w, "index", artists)
+	// artists, _ := handlers.GetArtists()
+	// renderTemplate(w, "index", artists)
+
+	combinedData, err := handlers.GetArtistsWithRelations()
+    if err != nil {
+        fmt.Println("Error:", err) // Print the error for debugging
+        http.Error(w, "Failed to retrieve data", http.StatusInternalServerError)
+        return
+    }
+
+    renderTemplate(w, "index", combinedData)
 }
 
 func handle404(w http.ResponseWriter, r *http.Request) {

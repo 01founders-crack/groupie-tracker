@@ -110,6 +110,11 @@ h2 {
     padding-right: 40px;
 }
 
+.aboutLink {
+    text-decoration: none;
+    color:rgb(32, 35, 41)
+}
+
 .donateElement {
     margin: 0px;
     border-radius: 0.5rem;
@@ -120,6 +125,11 @@ h2 {
     color: rgb(51, 51, 51);
     transition: all 0.1s ease 0s;
 }
+
+.donateButton {
+    text-decoration: none;
+}
+
 
 .mainMain {
     padding-top: 2px;
@@ -200,7 +210,7 @@ h2 {
 
 .flashcard {
     width: 240px;
-    height: 600px;
+    height: 650px;
     text-size-adjust: small;
     perspective: 1000px;
   }
@@ -241,6 +251,63 @@ h2 {
   .flashcard:hover .back {
     transform: rotateY(0deg);
   }
+
+  .s2Error {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 4.5rem 0px;
+    background: rgb(39, 43, 51);
+    min-height: calc(50vh - 60px);
+    background-image: url('https://previews.123rf.com/images/marekkulhavy012/marekkulhavy0121408/marekkulhavy012140800044/30875035-music-background-in-flat-style-design-and-music-equipment-with-place-for-your-text.jpg');
+    background-size: cover;
+    background-position: center
+}
+
+.ErrorContainer {
+    margin-top: 1rem;
+}
+
+.ErrorMain {
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.ErrorCode {
+    color:yellow;
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.ErrorMessage {
+    color:yellow;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.ErrorMain p {
+    color:rgb(245, 245, 245);
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+.ErrorMain a {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: yellow;
+    text-underline-offset: 5px;
+}
+
+.ErrorMain a:hover {
+    color: yellow;
+    text-decoration: none;
+}
 
 .footerFooter {
     display: flex;

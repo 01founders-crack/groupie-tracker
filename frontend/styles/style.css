@@ -356,3 +356,59 @@ h2 {
 .twitterImg {
     padding-right: 35px;
 }
+
+@media (max-width: 767px) {
+    /* Header */
+    .headerNav {
+      padding: 0.5rem;
+    }
+    .aboutElement {
+      padding-right: 20px;
+    }
+
+    .s1 {
+        height: calc(40vh - 60px);
+    }
+    
+    /* Main */
+    .s1Header {
+      font-size: 3rem;
+    }
+    .s1img img,
+    .musicShowcase {
+      max-width: 100%;
+      height: auto;
+    }
+    .musicShowcase {
+      width: 100%;
+      height: 150px;
+      margin: 0.5rem 0;
+    }
+    .backText ul {
+      padding: 0;
+      font-size: 14px;
+    }
+    
+    /* Flashcard */
+    .flashcard {
+      width: 240px;
+      height: 650px;
+    }
+    
+    /* Error Sections */
+    .ErrorMain {
+      font-size: 18px;
+    }
+    
+    /* Footer */
+    .footerFooter {
+      padding: 2rem 0;
+    }
+    .iconLinks {
+      margin-top: 1rem;
+      justify-content: space-around;
+    }
+    .devNames {
+      font-size: 14px;
+    }
+  }

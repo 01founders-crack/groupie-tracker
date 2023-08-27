@@ -10,18 +10,20 @@ import (
 )
 
 func main() {
-	// Serve static files (CSS, images, etc.) from the frontend directory
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./frontend/styles"))))
 	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("./frontend/images"))))
 
 	http.HandleFunc("/", handleNotFound)
 	http.HandleFunc("/500", handle500)
 
-	_, err := handlers.GetArtists()
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
+	go func() {
+		_, err := handlers.GetArtists()
+		if err != nil {
+			fmt.Println("Error:", err)
+			return
+		}
+		fmt.Println("Artists Fetched")
+	}()
 
 	port := "3000"
 	println("Server listening on port http://localhost:" + port)
@@ -61,23 +63,20 @@ func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
 
 func handleNotFound(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path == "/" {
-		// Serve the index.html page for the root path
 		combinedData, err := handlers.GetArtistsWithRelations()
 		if err != nil {
-			fmt.Println("Error:", err) // Print the error for debugging
+			fmt.Println("Error:", err)
 			http.Error(w, "Failed to retrieve data", http.StatusInternalServerError)
 			return
 		}
-
 		renderTemplate(w, "index", combinedData)
 	} else {
-		// Serve the 404.html page for other not-found routes
-		data := struct{}{} // Data for rendering, if needed
+		data := struct{}{}
 		renderTemplate(w, "404", data)
 	}
 }
 
 func handle500(w http.ResponseWriter, r *http.Request) {
-	data := struct{}{} // Data for rendering, if needed
+	data := struct{}{}
 	renderTemplate(w, "500", data)
 }
